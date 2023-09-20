@@ -1,0 +1,142 @@
+# Задача 1: Клас Address
+class Address:
+    def __init__(self, index, country, city, street, house, apartment):
+        self.__index = index
+        self.__country = country
+        self.__city = city
+        self.__street = street
+        self.__house = house
+        self.__apartment = apartment
+
+    # Методи доступу до полів
+    def get_index(self):
+        return self.__index
+
+    def set_index(self, index):
+        self.__index = index
+
+    def get_country(self):
+        return self.__country
+
+    def set_country(self, country):
+        self.__country = country
+
+    def get_city(self):
+        return self.__city
+
+    def set_city(self, city):
+        self.__city = city
+
+    def get_street(self):
+        return self.__street
+
+    def set_street(self, street):
+        self.__street = street
+
+    def get_house(self):
+        return self.__house
+
+    def set_house(self, house):
+        self.__house = house
+
+    def get_apartment(self):
+        return self.__apartment
+
+    def set_apartment(self, apartment):
+        self.__apartment = apartment
+
+# Створення екземпляра класу Address та виведення інформації
+address = Address("12345", "Україна", "Київ", "вул. Івано-Франка", "1", "10")
+print("Address Info:")
+print("Index:", address.get_index())
+print("Country:", address.get_country())
+print("City:", address.get_city())
+print("Street:", address.get_street())
+print("House:", address.get_house())
+print("Apartment:", address.get_apartment())
+
+# Задача 2: Клас Converter
+class Converter:
+    def __init__(self, usd, eur, pln):
+        self.__usd = usd
+        self.__eur = eur
+        self.__pln = pln
+
+    def hryvnia_to_usd(self, amount):
+        return amount / self.__usd
+
+    def hryvnia_to_eur(self, amount):
+        return amount / self.__eur
+
+    def hryvnia_to_pln(self, amount):
+        return amount / self.__pln
+
+    def usd_to_hryvnia(self, amount):
+        return amount * self.__usd
+
+    def eur_to_hryvnia(self, amount):
+        return amount * self.__eur
+
+    def pln_to_hryvnia(self, amount):
+        return amount * self.__pln
+
+# Створення екземпляра класу Converter та конвертація гривні в інші валюти
+converter = Converter(26.5, 31.2, 6.5)
+amount_hryvnia = 2000
+print("\nCurrency Conversion:")
+print("2000 UAH to USD:", converter.hryvnia_to_usd(amount_hryvnia))
+print("2000 UAH to EUR:", converter.hryvnia_to_eur(amount_hryvnia))
+print("2000 UAH to PLN:", converter.hryvnia_to_pln(amount_hryvnia))
+
+# Задача 3: Клас Employee
+class Employee:
+    def __init__(self, last_name, first_name):
+        self.__last_name = last_name
+        self.__first_name = first_name
+
+    def calculate_salary(self, position, experience):
+        positions = {
+            "manager": 40000,
+            "developer": 45000,
+            "designer": 55000
+        }
+        tax_rate = 0.15
+        base_salary = positions.get(position, 25000)
+        total_salary = base_salary + (experience * 2000)
+        tax = total_salary * tax_rate
+        net_salary = total_salary - tax
+        return net_salary
+
+# Створення екземпляра класу Employee та розрахунок окладу та податкового збору
+employee = Employee("Maks", "Nocap")
+position = "developer"
+experience = 5
+print("\nEmployee Info:")
+print("Last Name:", employee._Employee__last_name)  # Одержання доступу до "приватного" поля
+print("First Name:", employee._Employee__first_name)  # Одержання доступу до "приватного" поля
+print("Position:", position)
+print("Experience (years):", experience)
+print("Net Salary (UAH):", employee.calculate_salary(position, experience))
+
+# Задача 4: Клас User
+from datetime import datetime
+
+class User:
+    def __init__(self, login, first_name, last_name, age):
+        self.__login = login
+        self.__first_name = first_name
+        self.__last_name = last_name
+        self.__age = age
+        self.__registration_date = datetime.now()
+
+    def get_registration_date(self):
+        return self.__registration_date
+
+    def get_user_info(self):
+        return f"User: {self.__first_name} {self.__last_name} (Login: {self.__login}, Age: {self.__age}, Registration Date: {self.__registration_date})"
+
+# Створення екземпляра класу User та виведення інформації про користувача
+user = User("user123", "Maks", "Nocap", 26)
+print("\nUser Info:")
+print(user.get_user_info())
+print("Registration Date:", user.get_registration_date())
